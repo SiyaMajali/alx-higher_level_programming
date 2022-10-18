@@ -105,6 +105,6 @@ Checking one arg:
 
 Checking more than 2 args:
 	 >>> add_integer(1, 2, 3)
-         Traceback (most recent call last):
+         Traceback (most recent call last): 
          ...
          TypeError: add_integer() takes 2 positional arguments but 3 were given
