@@ -1,41 +1,30 @@
 #!/usr/bin/python3
-"""Log parsing script."""
 import sys
+import io
 
-total_size = 0
-codes = {'200': 0, '301': 0, '400': 0, '401': 0,
-         '403': 0, '404': 0, '405': 0, '500': 0}
-iteration = 0
+#input = io.TextIOWrapper(sys.stdin.buffer, encoding='utf-8')
+#with open(input, "r", encoding="utf-8") as file:
+ #   for line in file:
+  #      print(line)
 
+#input = io.TextIOWrapper(sys.stdin , encoding='utf-8')
 
-def print_stats():
-    """Function that prints a resume of the stats."""
-    print("File size: {}".format(total_size))
-    for k, v in sorted(codes.items()):
-        if v is not 0:
-            print("{}: {}".format(k, v))
-
-
-try:
-    for line in sys.stdin:
-        line = line.split()
-        if len(line) >= 2:
-            tmp = iteration
-            if line[-2] in codes:
-                codes[line[-2]] += 1
-                iteration += 1
-            try:
-                total_size += int(line[-1])
-                if tmp == iteration:
-                    iteration += 1
-            except:
-                if tmp == iteration:
-                    continue
-
-        if iteration % 10 == 0:
-            print_stats()
-
-    print_stats()
-
-except KeyboardInterrupt:
-    print_stats()
+dictstatus = {}
+totalsize = 0
+totalcount = 0
+for line in sys.stdin:
+    split = line.split()
+    status = split[-2]
+    totalsize += int(split[-1])
+    if status in dictstatus.keys():
+        dictstatus[status] += 1
+    else:
+        dictstatus[status] = 1
+    totalcount += 1
+    if totalcount == 10:
+        sortme = sorted(dictstatus.keys())
+        print("File size:", totalsize)
+        for keys in sortme:
+            print("{}: {}".format(keys, dictstatus[keys]))
+        totalcount = 0
+        continue
