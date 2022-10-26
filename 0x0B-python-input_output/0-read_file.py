@@ -1,8 +1,10 @@
 #!/usr/bin/python3
-"""
-Function that reads txt file
-prints to stdout
-"""
+'''
+model read text file from UTF8 and prints it stdout
+'''
 def read_file(filename=""):
-    with open(filename) as f:
+    '''
+    reads text file(UTF8)  and print it stdout
+    '''
+    with open(filename, 'r', encoding='utf-8') as f:
         print(f.read(), end="")
