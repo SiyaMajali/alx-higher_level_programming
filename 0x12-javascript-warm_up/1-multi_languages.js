@@ -1,8 +1,4 @@
 #!/usr/bin/node
-"use stric";
-const first = "C is fun";
-const second = "Python is cool";
-const third = "JavaScript is amazing";
-console.log(first);
-console.log(second);
-console.log(third);
+// It prints 3 lines
+
+console.log('C is fun\nPython is cool\nJavascript is amazing');
