@@ -2,6 +2,9 @@
 """
 fetches https://alx-intranet.hbtn.io/status
 """
+     import urllib.request as request
+
+
 if __name__ == "__main__":
      """fetches https://alx-ntranet.hbtn.io/status"""
    
