@@ -1,12 +1,16 @@
 #!/usr/bin/python3
 """
-fetches https://intranet.hbtn.io/status
+Python script
 """
-if __name__ == "__main__":
-    import urllib.request as request
-    with request.urlopen('https://intranet.hbtn.io/status') as r:
-        html = r.read()
+
+
+if __name__ == '__main__':
+    from urllib.request import Request, urlopen
+
+    req = Request('https://alx-intranet.hbtn.io/status')
+    with urlopen(req) as f:
+        the_page = f.read()
         print('Body response:')
-        print("\t- type: {}".format(type(html)))
-        print("\t- content: {}".format(html))
-        print("\t- utf8 content: {}".format(html.decode('utf-8')))
+        print('\t- type: {}'.format(type(the_page)))
+        print('\t- content: {}'.format(the_page))
+        print('\t- utf8 content: {}'.format(the_page.decode('utf8')))
