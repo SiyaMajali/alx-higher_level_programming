@@ -2,6 +2,7 @@
 '''
 Script that fetches https://alx-intranet.hbtn.io/status
 '''
+if __name__ == "__main__":
 from urllib import request
 
 url = 'https://alx-intranet.hbtn.io/status'
